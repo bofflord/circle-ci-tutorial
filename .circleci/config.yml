@@ -13,7 +13,7 @@ jobs:
     steps:
       - run: echo "print this text to a file" > output.txt
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: ~/
           paths:
             - output.txt    
   print_output_file:
@@ -21,8 +21,8 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - attach_workspace:
-          at: tmp/workspace
-      - run: cat tmp/workspace/output.txt
+          at: ~/
+      - run: cat ~/output.txt
   print-environmentvar:
     docker:
       - image:  circleci/node:13.8.0
